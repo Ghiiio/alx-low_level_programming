@@ -1,5 +1,6 @@
-##include <stdio.h>
-#include "holberton.h"
+#include <stdio.h>
+#include "main.h"
+
 /**
  *rev_string - update value.
  *@s: value to be evaluate.
