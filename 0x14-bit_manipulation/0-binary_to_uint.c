@@ -1,46 +1,47 @@
-#include "main.h"
-/**
- * _stoi - converts chars to ints
- * @c: char to convert
- * Return: converted int
- */
-unsigned int _stoi(char c)
-{
-	return ((unsigned int) c - '0');
-}
-/**
- * _strlen - calculates the length of the string
- * @s: input
- * Return: length of string
- */
-unsigned int _strlen(const char *s)
-{
-	unsigned int i;
+#include <stdlib.h>
+#include <stdio.h>
+#include "holberton.h"
 
-	for (i = 0; s[i]; i++)
-		;
-	return (i);
-}
 /**
- * binary_to_uint - converts a string of 1's and 0's to a decimal number
- * @b: string to convert
- * Return: unsigned decimal number
- */
+  * binary_to_uint - Converts a binary number to an unsigned int
+  * @b: The binary string to converts
+  *
+  * Return: The positive number converted from a binary
+  */
 unsigned int binary_to_uint(const char *b)
 {
-	int i;
-	unsigned int result, tmp, expo;
+	unsigned int len = 0, count = 0, sum = 0;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
-	result = tmp = 0;
-	expo = 1;
-	for (i = _strlen(b) - 1; b[i]; i--, expo *= 2)
+
+	len = _strlen(b);
+	while (len--)
 	{
-		if (b[i] != '0' && b[i] != '1')
+		if (b[len] != 48 && b[len] != 49)
 			return (0);
-		tmp = _stoi(b[i]);
-		result += tmp * expo;
+
+		if (b[len] == 49)
+			sum += 1 << count;
+
+		count++;
 	}
-	return (result);
+
+	return (sum);
+}
+
+/**
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  *
+  * Return: String length
+  */
+int _strlen(const char *s)
+{
+	int c = 0;
+
+	while (s[c])
+		c++;
+
+	return (c);
 }
